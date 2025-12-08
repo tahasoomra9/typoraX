@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TyporaX — Typing Speed</title>
+    <link rel="icon" href="./assets/typoraX_logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,9 +16,8 @@
             <div class="brand">TyporaX</div>
             <button class="nav-toggle" aria-label="Toggle menu">☰</button>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Start Typing</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </div>
     </nav>
@@ -41,6 +41,10 @@
                     <div class="stat-item">
                         <span class="stat-label">Mistakes</span>
                         <span class="stat-value" id="mistake-display">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Accuracy</span>
+                        <span class="stat-value" id="accuracy-display">100%</span>
                     </div>
                 </div>
 
@@ -100,5 +104,6 @@
     </div>
     
     <script src="main.js"></script>
+    
 </body>
 </html>
