@@ -1,5 +1,5 @@
 :root {
-    /* Palette */
+    
     --bg-body: #eef2f6;
     --glass-surface: rgba(255, 255, 255, 0.75);
     --glass-border: rgba(255, 255, 255, 0.8);
@@ -12,13 +12,13 @@
     --accent-color: #0f172a;
     --accent-hover: #334155;
     
-    /* Spacing */
+    
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 8px;
     --nav-height: 70px;
     
-    /* Animation */
+  
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -39,7 +39,7 @@ body {
     padding-top: var(--nav-height);
 }
 
-/* Ambient Background Elements */
+
 body::before, body::after {
     content: '';
     position: fixed;
@@ -71,7 +71,7 @@ body::after {
     50% { transform: translate(30px, 50px); }
 }
 
-/* NAVIGATION */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -132,7 +132,7 @@ body::after {
     cursor: pointer;
 }
 
-/* MAIN LAYOUT */
+
 #web-container {
     width: min(1200px, 92%);
     margin: 0 auto;
@@ -151,7 +151,7 @@ body::after {
     align-items: start;
 }
 
-/* TYPING SECTION (Left) */
+
 #typing-section {
     background: var(--glass-surface);
     backdrop-filter: blur(24px) saturate(180%);
@@ -167,7 +167,7 @@ body::after {
     transition: transform 0.3s ease;
 }
 
-/* Stats Bar */
+
 .stats-bar {
     display: flex;
     gap: 2rem;
@@ -202,7 +202,7 @@ body::after {
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* Timer Buttons */
+
 #timer-content {
     display: inline-flex;
     background: rgba(226, 232, 240, 0.5);
@@ -237,13 +237,13 @@ body::after {
     font-weight: 600;
 }
 
-/* Text Wrapper */
+
 #typing-wrapper {
     position: relative;
     width: 100%;
 }
 
-/* Hidden Input Logic */
+
 .input-field {
     position: fixed;
     z-index: 0;
@@ -277,7 +277,7 @@ body::after {
     border-color: rgba(148, 163, 184, 0.2);
 }
 
-/* Character Logic */
+
 #typing-text span {
     position: relative;
     transition: color 0.1s ease;
@@ -288,7 +288,7 @@ body::after {
 }
 
 #typing-text span.incorrect {
-    color: #ef4444; /* Red */
+    color: #ef4444; 
     background: rgba(239, 68, 68, 0.1);
     border-radius: 4px;
 }
@@ -339,7 +339,7 @@ body::after {
     transform: translateY(0);
 }
 
-/* SIDEBAR (Right) */
+
 #sidebar-section {
     display: flex;
     flex-direction: column;
@@ -396,7 +396,7 @@ body::after {
     font-style: italic;
 }
 
-/* Settings Panel */
+
 .settings-group label {
     display: flex;
     align-items: center;
