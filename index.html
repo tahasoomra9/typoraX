@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TyporaX — Typing Speed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="nav-inner">
+            <div class="brand">TyporaX</div>
+            <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="web-container">
+        <div id="content">
+            
+            <!-- Main Typing Area -->
+            <main id="typing-section">
+                
+                <!-- 1. Live Stats Bar -->
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-label">Time Left</span>
+                        <span class="stat-value" id="time-left">60s</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">WPM</span>
+                        <span class="stat-value" id="wpm-display">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Mistakes</span>
+                        <span class="stat-value" id="mistake-display">0</span>
+                    </div>
+                </div>
+
+                <!-- 2. Timer Selection -->
+                <div id="timer-content" role="group" aria-label="Timer Selection">
+                    <button class="seconds" data-value="15">15s</button>
+                    <button class="seconds" data-value="30">30s</button>
+                    <button class="seconds selected" data-value="60">60s</button>
+                </div>
+                
+                <!-- 3. Typing Wrapper (Text + Hidden Input) -->
+                <div id="typing-wrapper">
+                    <!-- The invisible input that captures keystrokes -->
+                    <input type="text" class="input-field" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    
+                    <!-- The visual display of text -->
+                    <div id="typing-content" tabindex="0">
+                        <p id="typing-text">Click Start to being Test .....</p>
+                    </div>
+                </div>
+                
+                <button class="start-btn">Start Test</button>
+            </main>
+
+            <!-- Sidebar -->
+            <aside id="sidebar-section">
+                <div class="panel" id="recent-scores">
+                    <h3>Recent Scores</h3>
+                    <ul class="scores-list">
+                        <li class="empty">No recent scores yet.</li>
+                    </ul>
+                    <button class="clear-btn">Clear History</button>
+                </div>
+                
+                <div class="panel" id="leaderboard">
+                    <h3>Leaderboard</h3>
+                    <ol class="leaderboard-list">
+                        <li class="empty">No entries yet.</li>
+                    </ol>
+                </div>
+                
+                <div class="panel" id="settings">
+                    <h3>Settings</h3>
+                    <div class="settings-group">
+                        <label>
+                            Show WPM
+                            <input type="checkbox" id="show-wpm" checked> 
+                        </label>
+                        <label>
+                            Sound Effects
+                            <input type="checkbox" id="sound"> 
+                        </label>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
