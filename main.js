@@ -143,7 +143,73 @@ function addRecentScore() {
 
   existingScores.push(ScoreEntry); //push the entreis into exsitingscore var
   localStorage.setItem("allScores", JSON.stringify(existingScores)); //set or save into all scores with data of exsitingscore
+
+  existingScores.forEach(score => {
+    console.log("WPM: ",score.wpm);
+    console.log("Accuracy: ",score.Accuracy);
+    console.log("Timestamp: ",score.timeStamp);
+  });
+
+  renderRecentScore();
 }
+
+
+function deleteHistory () {
+const RecentclearHistoryBtn = document.querySelector('#recent-scores .clear-btn');
+
+  RecentclearHistoryBtn.addEventListener('click', () => {
+
+    localStorage.removeItem('allScores');
+    renderRecentScore();
+
+  });
+
+}
+
+
+// Render Recent Score function
+
+function renderRecentScore() {
+
+    const recentScoresPanel = document.querySelector('#recent-scores');
+    const recentScoresTitle = document.querySelector('#recent-scores h3');
+    const scoresList = document.querySelector('#recent-scores .scores-list');
+    const emptyMessage = document.querySelector('#recent-scores .scores-list .empty');
+    const clearHistoryBtn = document.querySelector('#recent-scores .clear-btn');
+
+    let scores = JSON.parse(localStorage.getItem("allScores"));
+
+    if (scores === null) {
+      scores = [];
+    }
+
+    
+
+    scoresList.innerHTML = "";
+
+    scores.slice().reverse().forEach(score => {
+        
+      const list = document.createElement('li');
+      
+      const wpmScoreSpan = document.createElement('span');
+      const accuracyScoreSpan = document.createElement('span');
+      const timeScoreSpan = document.createElement('span');
+      
+      wpmScoreSpan.innerText = `WPM: ${Math.round(score.wpm)}`;
+      accuracyScoreSpan.innerText = `Acc: ${Math.round(score.Accuracy)}%`;
+      //timeScoreSpan.innerText = `Time: ${Math.floor(score.timeStamp / 1000)}`;
+
+      list.append(wpmScoreSpan);
+      list.append(accuracyScoreSpan);
+      list.append(timeScoreSpan);
+      
+      scoresList.appendChild(list)
+
+    });
+
+    
+}
+
 
 //WPM logic
 function wpmLogic() {
@@ -231,3 +297,6 @@ items.forEach((el) => {
     }
   });
 });
+
+renderRecentScore();
+deleteHistory();

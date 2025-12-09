@@ -565,3 +565,84 @@ body {
     color: #d8b4fe;
     font-weight: 600;
 }
+
+#recent-scores .scores-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between score cards */
+    padding-right: 4px; /* Space for scrollbar */
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-dim);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+.score-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(196, 181, 253, 0.1);
+    transform: translateX(4px);
+}
+
+/* Left Side: WPM Big Number */
+.score-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+.score-wpm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand);
+    text-shadow: 0 0 15px rgba(196, 181, 253, 0.3);
+}
+
+.score-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+}
+
+/* Right Side: Details */
+.score-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.score-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+}
+
+.stat-icon {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* Accuracy Coloring */
+.acc-value {
+    font-weight: 500;
+}
+.acc-value.high { color: var(--text-primary); }
+.acc-value.medium { color: #fde047; } /* Yellowish */
+.acc-value.low { color: var(--error); }
+
+.time-value {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
