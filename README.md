@@ -1,53 +1,75 @@
 # TyporaX
 
-**[WORK IN PROGRESS]**
+![Project Status](https://img.shields.io/badge/Status-Work_in_Progress-yellow)
+![License](https://img.shields.io/badge/License-Open_Source-blue)
 
-This project is currently under active development. Features, design, and functionality are subject to change.
+**TyporaX** is a modern, elegant typing speed test application designed to help users improve their touch typing. Built with a focus on aesthetics and user experience, it utilizes a glassmorphism design language and provides real-time performance tracking.
 
-## Description
+## - Features
 
-TyporaX is a modern, browser-based typing speed test application. It allows users to practice touch typing by providing random paragraphs and tracking performance metrics such as Words Per Minute (WPM) and error rates in real-time. The interface utilizes a glassmorphism design style for a clean, modern aesthetic.
+### Core Functionality
+*   **Dynamic Content:** Fetches random practice paragraphs from a JSON data source to ensure variety.
+*   **Timer Options:** Selectable test durations of **15s, 30s, and 60s**.
+*   **Smart Input Tracking:**
+    *   Highlights correct characters.
+    *   Flags incorrect entries in red.
+    *   Supports backspacing to correct mistakes dynamically.
+    *   "Blinking" active cursor for better visibility.
 
-## Features
+### Statistics & Data
+*   **Real-time Metrics:** Displays Time Remaining, WPM (Words Per Minute), Mistake Count, and Accuracy % while you type.
+*   **Persistent History:** Uses **Local Storage** to save your recent run history so your data isn't lost on refresh.
+*   **Leaderboard System:** Automatically calculates and displays your **Top 3** best performances based on WPM.
+*   **Data Management:** Option to clear your local history completely.
 
-*   **Timer Selection:** Users can choose between 15s, 30s, and 60s test durations.
-*   **Real-time Stats:** Displays time left, current WPM, and mistake count dynamically while typing.
-*   **Visual Feedback:**
-    *   Correct characters are highlighted.
-    *   Incorrect characters are marked in red.
-    *   Active cursor blinker tracks current position.
-*   **Responsive Design:** Adapts to different screen sizes, with a collapsible sidebar on mobile devices.
-*   **Random Content:** Fetches practice paragraphs randomly from a JSON data source.
+### Design
+*   **Glassmorphism UI:** Features a translucent, frosted-glass aesthetic with modern typography (Inter & JetBrains Mono).
+*   **Responsive Layout:** Fully adaptive design that works on desktops, tablets, and mobile devices.
+*   **Visual Feedback:** Interactive hover states and focus animations.
 
-## Planned Features (To-Do)
+## - Technologies Used
 
-*   **Sound Effects:** Implementation of typing sounds and error alerts (UI toggle exists, logic pending).
-*   **Local Storage:** Saving recent scores and history to the browser.
-*   **Leaderboard:** Logic to sort and display top scores.
-*   **WPM Hiding:** Functionality for the "Show WPM" toggle to hide stats during the test for better focus.
-*   **Code Refactoring:** Optimizing the main JavaScript loop and event listeners.
+*   **HTML5** (Semantic structure)
+*   **CSS3** (Variables, Flexbox, Grid, Backdrop-filter, Animations)
+*   **JavaScript (ES6+)** (DOM manipulation, LocalStorage API, Fetch API, Game Logic)
+*   **Fonts:** Inter (UI) and JetBrains Mono (Code/Typing).
 
-## Technologies Used
+## - Roadmap
 
-*   HTML5
-*   CSS3 (Custom variables, Flexbox, Grid, Glassmorphism effects)
-*   Vanilla JavaScript (ES6+)
+The project is currently in active development. The following features are planned for future updates:
 
-## Project Structure
+*   **Performance Graphs:** Visual charts to display WPM trends over the course of a single test or over time.
+*   **Sound Effects:** Optional mechanical keyboard sounds and audio cues for errors.
+*   **Caret Customization:** Options to change the cursor style (block, line, underline).
+*   **Code Refactoring:** Further optimization of the event loop and state management.
 
-*   `index.html`: The main structure of the application.
-*   `styles.css`: Contains all styling, animations, and responsive rules.
-*   `main.js`: Handles game logic, timer, WPM calculation, and DOM manipulation.
-*   `paragraphs.json`: A data file containing the text samples used for the typing tests.
+## - Project Structure
 
-## How to Run
+```text
+/
+├── index.html       # Main application structure
+├── styles.css       # Styling, themes, and responsive rules
+├── main.js          # Game logic, timer, storage, and events
+└── paragraphs.json  # Data source for typing text
+```
 
-1.  Clone or download this repository.
-2.  Ensure all files (`index.html`, `styles.css`, `main.js`, `paragraphs.json`) are in the same directory.
-3.  Open `index.html` in any modern web browser.
+## ⚡ How to Run
 
-**Note:** Because this project uses `fetch` to load the JSON file, you may encounter CORS errors if you open the file directly via the file protocol (file://). It is recommended to run this using a local server (e.g., Live Server in VS Code or Python's http.server).
+1.  Clone or Download this repository.
+2.  Ensure `index.html`, `styles.css`, `main.js`, and `paragraphs.json` are in the same directory.
 
-## License
+> **Important:** Because this project uses the `fetch` API to load the JSON file, browsers will block the request if you simply double-click `index.html` due to CORS (Cross-Origin Resource Sharing) policies.
 
-This project is open source.
+### Run via Local Server:
+
+*   **VS Code:** Install the "Live Server" extension, right-click `index.html`, and select "Open with Live Server".
+*   **Python:** Open a terminal in the folder and run:
+
+    ```bash
+    python -m http.server
+    ```
+
+
+## 📄 License
+
+This project is open source. Feel free to fork, modify, and learn from it.
