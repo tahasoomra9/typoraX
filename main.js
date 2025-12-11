@@ -151,6 +151,8 @@ function addRecentScore() {
   });
 
   renderRecentScore();
+
+  renderTopScores();
 }
 
 
@@ -161,53 +163,205 @@ const RecentclearHistoryBtn = document.querySelector('#recent-scores .clear-btn'
 
     localStorage.removeItem('allScores');
     renderRecentScore();
+    renderTopScores();
 
   });
 
 }
 
 
+
+//Getting scores
+
+function getScores () {
+  let scores = JSON.parse(localStorage.getItem("allScores"));
+
+  if (scores === null) {
+    scores = [];
+  } 
+  
+  return scores;
+
+}
+
+//TOP SCores
+
+function topScores(limit) {
+
+    const scores = getScores();
+  
+    const sortedScores = [...scores].sort((a,b) => b.wpm - a.wpm);
+
+    return sortedScores.slice(0, limit);
+
+}
+
+
+function renderTopScores (limit = 3) {
+
+  const top = topScores(limit);
+  const list = document.querySelector('#top-scores .scores-list');
+  
+  list.innerHTML = ""; 
+
+   const fragment = document.createDocumentFragment();
+
+   if (top.length === 0) {
+
+    const emptyLi = document.createElement('li');
+
+    emptyLi.className = "empty";
+    emptyLi.innerText = 'No entries yet';
+    list.append(emptyLi);
+    return;
+
+   }
+
+   top.forEach(score => {
+
+    const li = document.createElement('li');
+
+    const left = document.createElement('div');
+    const right = document.createElement('div');
+
+    left.className = 'score-left';
+    right.className = 'score-right';
+
+  const wpm = document.createElement('span');
+  wpm.className = 'wpm-value';
+  wpm.innerText = Math.round(score.wpm);
+  
+  const wpmLabel = document.createElement('span');
+    wpmLabel.className = "wpm-label";
+    wpmLabel.innerText = "WPM";
+
+    
+    const acc = document.createElement('span');
+    acc.className = "acc-value";
+    acc.innerText = `${Math.round(score.Accuracy)}%`;
+
+    // TIME
+    const time = document.createElement('span');
+    time.className = "time-value";
+    time.innerText = formatTime(score.timeStamp);
+
+        left.appendChild(wpm);
+        left.appendChild(wpmLabel);
+        right.appendChild(acc);
+        right.appendChild(time);
+
+        li.appendChild(left);
+        li.appendChild(right);
+
+        fragment.appendChild(li);
+  
+  }); 
+
+   list.appendChild(fragment);
+
+}
+
+
+//Time format 
+const formatTime = (timestamp) => {
+    if (!timestamp) return '--:--';
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+};
+
+
+//Delete Top score History
+
+
 // Render Recent Score function
 
 function renderRecentScore() {
 
-    const recentScoresPanel = document.querySelector('#recent-scores');
+ 
+  
+  const recentScoresPanel = document.querySelector('#recent-scores');
     const recentScoresTitle = document.querySelector('#recent-scores h3');
     const scoresList = document.querySelector('#recent-scores .scores-list');
     const emptyMessage = document.querySelector('#recent-scores .scores-list .empty');
     const clearHistoryBtn = document.querySelector('#recent-scores .clear-btn');
 
     let scores = JSON.parse(localStorage.getItem("allScores"));
+    scoresList.innerHTML = ""; // Clear current list
 
     if (scores === null) {
       scores = [];
     }
 
+    if (scores.length === 0) {
+
+      const emptyLi = document.createElement('li');
+
+    emptyLi.className = "empty";
+    emptyLi.innerText = 'No entries yet';
+    scoresList.append(emptyLi);
+    return;
+
+      
+    }
+
+scores.slice().reverse().forEach(score => {
     
-
-    scoresList.innerHTML = "";
-
-    scores.slice().reverse().forEach(score => {
-        
-      const list = document.createElement('li');
-      
-      const wpmScoreSpan = document.createElement('span');
-      const accuracyScoreSpan = document.createElement('span');
-      const timeScoreSpan = document.createElement('span');
-      
-      wpmScoreSpan.innerText = `WPM: ${Math.round(score.wpm)}`;
-      accuracyScoreSpan.innerText = `Acc: ${Math.round(score.Accuracy)}%`;
-      //timeScoreSpan.innerText = `Time: ${Math.floor(score.timeStamp / 1000)}`;
-
-      list.append(wpmScoreSpan);
-      list.append(accuracyScoreSpan);
-      list.append(timeScoreSpan);
-      
-      scoresList.appendChild(list)
-
-    });
+    
+    const li = document.createElement('li');
 
     
+    const leftDiv = document.createElement('div');
+    leftDiv.className = 'score-left';
+
+    
+    const dotSpan = document.createElement('span');
+    dotSpan.className = 'status-dot';
+
+   
+    const wpmValSpan = document.createElement('span');
+    wpmValSpan.className = 'wpm-value';
+    wpmValSpan.innerText = Math.round(score.wpm);
+
+   
+    const wpmLabelSpan = document.createElement('span');
+    wpmLabelSpan.className = 'wpm-label';
+    wpmLabelSpan.innerText = 'WPM';
+
+  
+    leftDiv.appendChild(dotSpan);
+    leftDiv.appendChild(wpmValSpan);
+    leftDiv.appendChild(wpmLabelSpan);
+
+
+   
+    const rightDiv = document.createElement('div');
+    rightDiv.className = 'score-right';
+
+    
+    const accSpan = document.createElement('span');
+    accSpan.className = 'acc-value';
+    accSpan.innerText = `${Math.round(score.Accuracy)}%`;
+
+   
+    const timeSpan = document.createElement('span');
+    timeSpan.className = 'time-value';
+    timeSpan.innerText = formatTime(score.timeStamp || Date.now());
+
+    
+    rightDiv.appendChild(accSpan);
+    rightDiv.appendChild(timeSpan);
+
+
+    
+    li.appendChild(leftDiv);
+    li.appendChild(rightDiv);
+    
+    scoresList.appendChild(li);
+
+    
+});
+
+
 }
 
 
@@ -298,5 +452,7 @@ items.forEach((el) => {
   });
 });
 
+
 renderRecentScore();
+renderTopScores();
 deleteHistory();

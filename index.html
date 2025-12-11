@@ -7,14 +7,14 @@
     <link rel="icon" href="./assets/typoraX_logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-inner">
             <div class="brand">TyporaX</div>
-            <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+            
             <ul class="nav-links">
                 <li><a href="#">Start Typing</a></li>
                 <li><a href="about.html">About</a></li>
@@ -25,13 +25,12 @@
     <div id="web-container">
         <div id="content">
             
-            
+        
             <main id="typing-section">
-                
                 
                 <div class="stats-bar">
                     <div class="stat-item">
-                        <span class="stat-label">Time Left</span>
+                        <span class="stat-label">Time</span>
                         <span class="stat-value" id="time-left">60s</span>
                     </div>
                     <div class="stat-item">
@@ -48,18 +47,14 @@
                     </div>
                 </div>
 
-                
                 <div id="timer-content" role="group" aria-label="Timer Selection">
                     <button class="seconds" data-value="15">15s</button>
                     <button class="seconds" data-value="30">30s</button>
                     <button class="seconds selected" data-value="60">60s</button>
                 </div>
                 
-                
                 <div id="typing-wrapper">
-                    
                     <input type="text" class="input-field" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    
                     
                     <div id="typing-content" tabindex="0">
                         <p id="typing-text">Click Start to being Test .....</p>
@@ -69,41 +64,29 @@
                 <button class="start-btn">Start Test</button>
             </main>
 
-          
+        
             <aside id="sidebar-section">
+                
                 <div class="panel" id="recent-scores">
                     <h3>Recent Scores</h3>
-                    <ul class="scores-list">
-                         <li class="empty">No recent scores</li>
+                    <ul class="scores-list" id="scoresList">
+                        
                     </ul>
                     <button class="clear-btn">Clear History</button>
                 </div>
                 
-                <div class="panel" id="leaderboard">
-                    <h3>Leaderboard</h3>
-                    <ol class="leaderboard-list">
+                <div class="panel" id="top-scores">
+                    <h3>Top Results</h3>
+                    <ol class="scores-list">
                         <li class="empty">No entries yet.</li>
                     </ol>
                 </div>
                 
-                <div class="panel" id="settings">
-                    <h3>Settings</h3>
-                    <div class="settings-group">
-                        <label>
-                            Show WPM
-                            <input type="checkbox" id="show-wpm" checked> 
-                        </label>
-                        <label>
-                            Sound Effects
-                            <input type="checkbox" id="sound"> 
-                        </label>
-                    </div>
-                </div>
+
             </aside>
         </div>
     </div>
     
     <script src="main.js"></script>
-    
 </body>
 </html>
